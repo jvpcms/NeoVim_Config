@@ -6,3 +6,6 @@
 vim.keymap.set({ "n", "v" }, "d", '"_d')
 vim.keymap.set({ "n", "v" }, "D", '"_D')
 vim.keymap.set({ "n" }, "dd", '"_dd')
+
+-- Make select and paset not fill clipboard
+vim.keymap.set("v", "p", '"_dP', { noremap = true, silent = true })
