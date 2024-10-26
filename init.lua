@@ -72,17 +72,23 @@ require("lualine").setup({
         return battery or "Battery info not available"
       end,
     },
-    -- lualine_y = {
+    lualine_y = {
+      {
+        require("noice").api.statusline.mode.get, -- Indicate macro recording
+        cond = require("noice").api.statusline.mode.has,
+        color = { fg = "#ff9e64" },
+      },
+    },
     --   -- Your clock function or other components can go here if it’s already defined
     -- },
   },
 })
 
--- Java
+-- Java, typescript, vue
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = { ensure_installed = { "java" } },
+    opts = { ensure_installed = { "java", "vue", "css" } },
   },
   {
     "williamboman/mason.nvim",
@@ -91,17 +97,63 @@ return {
   -- Add additional LSP configuration for Java
   {
     "neovim/nvim-lspconfig",
-    opts = {
-      -- make sure mason installs the server
-      servers = {
-        jdtls = {},
-      },
-      setup = {
+    opts = function(_, opts)
+      -- Ensure volar and vtsls are initialized in opts.servers
+      opts.servers = opts.servers or {}
+
+      -- Add or modify the volar server configuration
+      opts.servers.volar = {
+        init_options = {
+          vue = {
+            hybridMode = true,
+          },
+        },
+      }
+
+      -- Add or extend the vtsls server configuration
+      opts.servers.vtsls = opts.servers.vtsls or {}
+      opts.servers.vtsls.filetypes = opts.servers.vtsls.filetypes or { "typescript", "javascript" }
+      table.insert(opts.servers.vtsls.filetypes, "vue")
+
+      -- Extend the vtsls configuration with the Vue TypeScript plugin
+      LazyVim.extend(opts.servers.vtsls, "settings.vtsls.tsserver.globalPlugins", {
+        {
+          name = "@vue/typescript-plugin",
+          location = LazyVim.get_pkg_path("vue-language-server", "/node_modules/@vue/language-server"),
+          languages = { "vue" },
+          configNamespace = "typescript",
+          enableForWorkspaceTypeScriptVersions = true,
+        },
+      })
+
+      -- Additional setup if needed for other languages, e.g., jdtls (Java)
+      opts.servers.jdtls = opts.servers.jdtls or {}
+
+      opts.setup = {
         jdtls = function()
           return true -- avoid duplicate servers
         end,
-      },
-    },
+      }
+    end,
+    -- opts = {
+    --   -- make sure mason installs the server
+    --   servers = {
+    --     jdtls = {},
+    --     volar = {
+    --       init_options = {
+    --         vue = {
+    --           hybridMode = true,
+    --         },
+    --       },
+    --     },
+    --     vtsls = {},
+    --   },
+    --   setup = {
+    --     jdtls = function()
+    --       return true -- avoid duplicate servers
+    --     end,
+    --   },
+    -- },
   },
   {
     "mfussenegger/nvim-jdtls",
