@@ -3,3 +3,6 @@
 -- Options are automatically loaded before LazyVim startup
 -- Use Pyright and Ruff for Python
 vim.g.lazyvim_python_lsp = "pyright"
+
+-- Disable mouse
+vim.opt.mouse = ""

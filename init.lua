@@ -2,7 +2,7 @@
 require("config.lazy")
 
 -- Setup Pyright and Ruff LSP servers
-vim.g.python3_host_prog = "/usr/bin/python3"
+vim.g.python3_host_prog = "/home/linuxbrew/.linuxbrew/bin/python3"
 vim.lsp.set_log_level("debug")
 
 local lspconfig = require("lspconfig")
@@ -11,15 +11,15 @@ local lspconfig = require("lspconfig")
 lspconfig.pyright.setup({
   settings = {
     python = {
-      pythonPath = "/usr/bin/python3",
-      pythonVersion = "3.12",
+      pythonPath = "/home/linuxbrew/.linuxbrew/bin/python3",
+      pythonVersion = "3.13",
     },
   },
 })
 
--- Accept completion with <C-l> in insert mode
-vim.g.copilot_no_tab_map = true -- Disable default Tab mapping for Copilot
-vim.api.nvim_set_keymap("i", "<C-l>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+-- -- Accept completion with <C-l> in insert mode
+-- vim.g.copilot_no_tab_map = true -- Disable default Tab mapping for Copilot
+-- vim.api.nvim_set_keymap("i", "<C-l>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 -- Setup NeoTree
 -- Show hidden viles by default
