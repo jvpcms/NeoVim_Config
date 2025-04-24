@@ -15,6 +15,7 @@ vim.opt.smartindent = true
 
 -- Line wrap
 vim.opt.wrap = true
+vim.opt.textwidth = 80
 
 -- Vim backup disable, but undotree access to older versions
 vim.opt.swapfile = false
