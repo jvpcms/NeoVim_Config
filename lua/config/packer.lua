@@ -43,6 +43,10 @@ return require('packer').startup(function(use)
 		},
 	})
 
+    -- Leap
     use("ggandor/leap.nvim")
+
+    -- GitHub Copilot
+    use("github/copilot.vim")
 
 end)
