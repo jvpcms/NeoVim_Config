@@ -5,6 +5,10 @@ vim.keymap.set("n", "<leader>ex", vim.cmd.Ex)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- Keep selection after indenting
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+
 -- Append next line keeps cursor at start
 vim.keymap.set("n", "J", "mzJ`z")
 
