@@ -1,5 +1,5 @@
 -- Remap Explore command
-vim.keymap.set("n", "<leader>ex", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>ex", "<cmd>Lexplore<CR>")
 
 -- Move selected section
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
