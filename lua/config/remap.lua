@@ -45,6 +45,9 @@ vim.keymap.set("n", "Y", '"+Y')
 -- Replace current word
 vim.keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+-- Search and replace
+vim.keymap.set("n", "<leader>rs", [[:%s/]])
+
 -- Clear search
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true })
 
