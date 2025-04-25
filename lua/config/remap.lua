@@ -32,9 +32,13 @@ vim.keymap.set({"n", "v"}, "d", '"_d')
 vim.keymap.set("n", "D", '"_D')
 vim.keymap.set("n", "dd", '"_dd')
 
--- Use the system's clipboard on vim
+-- Use the system's clipboard on yank
 vim.keymap.set({"n", "v"}, "y", '"+y')
 vim.keymap.set("n", "Y", '"+Y')
+
+-- Use the system's clipboard on x command
+vim.keymap.set({"n", "v"}, "x", '"+x')
+vim.keymap.set("n", "X", '"+X')
 
 -- Quick fix navigation
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
