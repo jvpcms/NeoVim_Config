@@ -1,7 +1,7 @@
 local leap = require("leap")
 
 leap.set_default_mappings()
-leap.opts.case_sensitive = true
+leap.opts.case_sensitive = false
 
 -- Disable jump to first match
 leap.opts.safe_labels = {}
