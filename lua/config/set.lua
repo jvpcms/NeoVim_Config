@@ -1,5 +1,8 @@
 -- Editor configs and sets
 
+-- Disable Mouse
+vim.opt.mouse = ""
+
 -- Line numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
