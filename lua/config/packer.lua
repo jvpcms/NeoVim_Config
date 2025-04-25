@@ -45,4 +45,13 @@ return require('packer').startup(function(use)
 
     -- GitHub Copilot
     use("github/copilot.vim")
+
+    -- Mason
+    use {
+        "williamboman/mason.nvim",
+        requires = {
+            "williamboman/mason-lspconfig.nvim",
+            "neovim/nvim-lspconfig",
+        },
+    }
 end)
