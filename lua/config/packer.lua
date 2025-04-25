@@ -12,15 +12,6 @@ return require('packer').startup(function(use)
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
-	-- Gruvbox Material Colorscheme
-	use({
-		'sainnhe/gruvbox-material',
-		as = 'gruvbox-material',
-		config = function()
-			vim.cmd('colorscheme gruvbox-material' )
-		end
-	})
-
     -- Rose Pine Colorscheme
     use({
         'rose-pine/neovim',
@@ -29,6 +20,15 @@ return require('packer').startup(function(use)
             vim.cmd('colorscheme rose-pine')
         end
     })
+
+	-- Gruvbox Material Colorscheme
+	use({
+		'sainnhe/gruvbox-material',
+		as = 'gruvbox-material',
+		config = function()
+			vim.cmd('colorscheme gruvbox-material' )
+		end
+	})
 
 	-- Tresitter Highlighting
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
