@@ -3,6 +3,7 @@ local builtin = require('telescope.builtin')
 -- Fuzy find: Files in project, Git files, live grep
 vim.keymap.set('n', '<leader>pf', function()
     builtin.find_files({
+        hidden = true,                      -- show hidden files
         no_ignore = true,                   -- don't respect .gitignore
         no_ignore_parent = true,            -- don't respect parent .gitignore
     })
