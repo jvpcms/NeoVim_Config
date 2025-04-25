@@ -21,6 +21,15 @@ return require('packer').startup(function(use)
 		end
 	})
 
+    -- Rose Pine Colorscheme
+    use({
+        'rose-pine/neovim',
+        as = 'rose-pine',
+        config = function()
+            vim.cmd('colorscheme rose-pine')
+        end
+    })
+
 	-- Tresitter Highlighting
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
