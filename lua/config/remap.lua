@@ -40,3 +40,6 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- Replace current word
 vim.keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- Clear search
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true })
