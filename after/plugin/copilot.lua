@@ -1,9 +1,9 @@
 -- Disable default Tab mapping
 vim.g.copilot_no_tab_map = true
 
-vim.api.nvim_set_keymap("i", "<M-k>", 'copilot#Accept("<CR>")', { expr = true, silent = true })
-vim.api.nvim_set_keymap("i", "<M-h>", "<Plug>(copilot-dismiss)", {})
-vim.api.nvim_set_keymap("i", "<M-;>", "<Plug>(copilot-next)", {})
+vim.api.nvim_set_keymap("i", "<M-e>", 'copilot#Accept("<CR>")', { expr = true, silent = true })
+vim.api.nvim_set_keymap("i", "<M-s>", "<Plug>(copilot-dismiss)", {})
+vim.api.nvim_set_keymap("i", "<M-r>", "<Plug>(copilot-next)", {})
 
 -- Accept one word
 local function SuggestOneWord()
@@ -12,11 +12,15 @@ local function SuggestOneWord()
     return vim.fn.split(bar,  [[[ .]\zs]])[1]
 end
 
-vim.keymap.set('i', '<M-l>', SuggestOneWord, {expr = true, remap = false})
+vim.keymap.set('i', '<M-f>', SuggestOneWord, {expr = true, remap = false})
 
--- Accept one line
-local function suggest_line()
-  return vim.fn["copilot#Accept"]("\n")
+-- Accept only one line from current Copilot suggestion, preserve the rest
+local function SuggestOneLine()
+    local suggestion = vim.fn['copilot#Accept']("")
+    local bar = vim.fn['copilot#TextQueuedForInsertion']()
+    local first_line = vim.split(suggestion, "\n", { plain = true })[1]
+    return first_line .. "\n"
 end
 
-vim.keymap.set("i", "<M-j>", suggest_line, { expr = true, silent = true, script = true })
+vim.keymap.set("i", "<M-d>", SuggestOneLine, {expr = true, remap = false})
+
