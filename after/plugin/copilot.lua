@@ -18,7 +18,7 @@ vim.keymap.set('i', '<M-f>', SuggestOneWord, {expr = true, remap = false})
 local function SuggestOneLine()
     local suggestion = vim.fn['copilot#Accept']("")
     local bar = vim.fn['copilot#TextQueuedForInsertion']()
-    local first_line = vim.split(suggestion, "\n", { plain = true })[1]
+    local first_line = vim.fn.split(bar, "\n")[1]
     return first_line .. "\n"
 end
 
