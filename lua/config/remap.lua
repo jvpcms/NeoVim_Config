@@ -5,12 +5,13 @@ vim.keymap.set("n", "<leader>ex", "<cmd>Lexplore<CR>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- Add new line above or below
+vim.keymap.set("n", "J", "o<Esc>k")
+vim.keymap.set("n", "K", "O<Esc>j")
+
 -- Keep selection after indenting
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
-
--- Append next line keeps cursor at start
-vim.keymap.set("n", "J", "mzJ`z")
 
 -- Half page jumb keeps cursor in middle
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
