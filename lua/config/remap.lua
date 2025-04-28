@@ -1,5 +1,5 @@
 -- Remap Explore command
-vim.keymap.set("n", "<leader>ex", "<cmd>Lexplore<CR>")
+vim.keymap.set("n", "<leader>ee", "<cmd>Lexplore<CR>")
 
 -- Move selected section
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -57,7 +57,7 @@ vim.keymap.set("n", "<leader>rs", [[:%s/]])
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true })
 
 -- Window navigation
-vim.keymap.set("n", "<leader>w", "<cmd>w<CR>")
+vim.keymap.set("n", "<leader>ww", "<cmd>w<CR>")
 vim.keymap.set("n", "<leader>wq", "<cmd>wq<CR>")
 vim.keymap.set("n", "<leader>wv", "<C-w>v")
 vim.keymap.set("n", "<leader>ws", "<C-w>s")
