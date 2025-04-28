@@ -22,6 +22,9 @@ mason_lspconfig.setup({
                         runtime = { version = "LuaJIT" },
                         workspace = { checkThirdParty = false },
                         telemetry = { enable = false },
+                        diagnostics = {
+                            globals = { "vim" },
+                        },
                     }
                 }
             end
