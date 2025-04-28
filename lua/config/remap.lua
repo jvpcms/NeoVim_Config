@@ -7,6 +7,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Add new line below
 vim.keymap.set("n", "J", "o<Esc>k")
+vim.keymap.set("n", "U", "O<Esc>j")
 
 -- Keep selection after indenting
 vim.keymap.set("v", "<", "<gv")
