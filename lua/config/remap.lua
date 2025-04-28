@@ -5,9 +5,8 @@ vim.keymap.set("n", "<leader>ee", "<cmd>Lexplore<CR>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- Add new line above or below
+-- Add new line below
 vim.keymap.set("n", "J", "o<Esc>k")
-vim.keymap.set("n", "K", "O<Esc>j")
 
 -- Keep selection after indenting
 vim.keymap.set("v", "<", "<gv")
@@ -38,7 +37,7 @@ vim.keymap.set({"n", "v"}, "y", '"+y')
 vim.keymap.set("n", "Y", '"+Y')
 
 -- Use the system's clipboard on x command
-vim.keymap.set({"n", "v"}, "x", '"+x')
+vim.keymap.set("v", "x", '"+x')
 vim.keymap.set("n", "X", '"+X')
 
 -- Quick fix navigation
