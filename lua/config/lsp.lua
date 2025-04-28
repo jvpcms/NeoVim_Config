@@ -20,11 +20,12 @@ mason_lspconfig.setup({
                 opts.settings = {
                     Lua = {
                         runtime = { version = "LuaJIT" },
-                        workspace = { checkThirdParty = false },
-                        telemetry = { enable = false },
-                        diagnostics = {
-                            globals = { "vim" },
+                        workspace = {
+                            checkThirdParty = false,
+                            library = vim.api.nvim_get_runtime_file("", true)
                         },
+                        telemetry = { enable = false },
+                        diagnostics = { globals = { "vim" }, },
                     }
                 }
             end
@@ -34,11 +35,29 @@ mason_lspconfig.setup({
     },
 })
 
+-- Set up LSP keymaps when LSP attaches to a buffer
+local lspAucmdGroup = vim.api.nvim_create_augroup('UserLspConfig', {})
+vim.api.nvim_create_autocmd('LspAttach', {
+    group = lspAucmdGroup,
+    callback = function(ev)
+        -- Enable completion triggered by <c-x><c-o>
+        vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+        -- LSP keymaps
+        local opts = { buffer = ev.buf }
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    end,
+})
+
 -- nvim-cmp setup (fixed)
 cmp.setup({
     sources = cmp.config.sources({
         { name = "nvim_lsp" },
-        -- Add other sources like buffer, path, etc.
+        { name = 'buffer' },
+        { name = 'path' },
     }),
     mapping = cmp.mapping.preset.insert({
         ['<C-Space>'] = cmp.mapping.complete(),
