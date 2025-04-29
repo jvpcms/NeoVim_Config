@@ -13,25 +13,17 @@ vim.keymap.set("n", "U", "O<Esc>j")
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
--- Half page jumb keeps cursor in middle
+-- Half-page jump keeps cursor in the middle
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
--- Keep cursor in middle when searching
+-- Keep cursor in the middle when searching
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- Paste from system's clipboard with p and P and not change yank buffer when replace
+-- Paste from system's clipboard with p and P
 vim.keymap.set("n", "p", '"+p')
 vim.keymap.set("n", "P", '"+P')
-
-vim.keymap.set("x", "p", '"_d"+p')
-vim.keymap.set("x", "P", '"_d"+P')
-
--- Use void register to preserve yank buffer in d commands,
-vim.keymap.set({"n", "v"}, "d", '"_d')
-vim.keymap.set("n", "D", '"_D')
-vim.keymap.set("n", "dd", '"_dd')
 
 -- Use the system's clipboard on yank
 vim.keymap.set({"n", "v"}, "y", '"+y')
@@ -40,6 +32,14 @@ vim.keymap.set("n", "Y", '"+Y')
 -- Use the system's clipboard on x command
 vim.keymap.set("v", "x", '"+x')
 vim.keymap.set("n", "X", '"+X')
+
+-- Use void register to preserve yank buffer in d and p commands
+vim.keymap.set({"n", "v"}, "d", '"_d')
+vim.keymap.set("n", "D", '"_D')
+vim.keymap.set("n", "dd", '"_dd')
+
+vim.keymap.set("x", "p", '"_d"+p')
+vim.keymap.set("x", "P", '"_d"+P')
 
 -- Quick fix navigation
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")

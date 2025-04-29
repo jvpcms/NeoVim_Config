@@ -123,3 +123,44 @@ use("tpope/vim-surround")
 
 ## Keybindings
 Here are some of the keybindings I find most useful:
+
+1. Use system clipboard for Vim yank, cut, and paste
+
+Most people prefer to keep separate clipboards or use new keybindings for the system clipboard.  
+In my regular workflow, I can't really remember needing to copy something in Vim while keeping the system clipboard unchanged.
+
+```lua
+-- Paste from system's clipboard with p and P
+vim.keymap.set("n", "p", '"+p')
+vim.keymap.set("n", "P", '"+P')
+
+-- Use the system's clipboard on yank
+vim.keymap.set({"n", "v"}, "y", '"+y')
+vim.keymap.set("n", "Y", '"+Y')
+
+-- Use the system's clipboard on x command
+vim.keymap.set("v", "x", '"+x')
+vim.keymap.set("n", "X", '"+X')
+```
+
+2. Keep clipboard unchanged when using `p` and `d`
+```lua
+vim.keymap.set({"n", "v"}, "d", '"_d')
+vim.keymap.set("n", "D", '"_D')
+vim.keymap.set("n", "dd", '"_dd')
+
+vim.keymap.set("x", "p", '"_d"+p')
+vim.keymap.set("x", "P", '"_d"+P')
+```
+
+3. Keep cursor centered when searching and jumping half a page
+```lua
+-- Half-page jump keeps cursor in the middle
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- Keep cursor in the middle when searching
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+```
+
