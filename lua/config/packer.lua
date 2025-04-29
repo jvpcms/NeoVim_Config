@@ -11,40 +11,15 @@ return require('packer').startup(function(use)
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
-    -- Colorschemes
-    use({ 'rose-pine/neovim', as = 'rose-pine' })
-	use({ 'sainnhe/gruvbox-material', as = 'gruvbox-material' })
+    -- Harpoon File Navigation
+    use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { {"nvim-lua/plenary.nvim"} }
+    }
 
-	-- Tresitter Highlighting
-	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-
-	-- Harpoon File Navigation
-	use {
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		requires = { {"nvim-lua/plenary.nvim"} }
-	}
-
-	-- Undo Tree
-	use('mbbill/undotree')
-
-	-- LazyGit
-	use({
-		"kdheepak/lazygit.nvim",
-		-- optional for floating window border decoration
-		requires = {
-			"nvim-lua/plenary.nvim",
-		},
-	})
-
-    -- Git Signs
-    use ('lewis6991/gitsigns.nvim')
-
-    -- Leap
-    use("ggandor/leap.nvim")
-
-    -- GitHub Copilot
-    use("github/copilot.vim")
+    -- Tresitter Highlighting
+    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
     -- LSP and Completion
     use {
@@ -61,4 +36,32 @@ return require('packer').startup(function(use)
             'hrsh7th/vim-vsnip'
         },
     }
+
+    -- LazyGit
+    use({
+        "kdheepak/lazygit.nvim",
+        -- optional for floating window border decoration
+        requires = {
+            "nvim-lua/plenary.nvim",
+        },
+    })
+
+    -- Git Signs
+    use ('lewis6991/gitsigns.nvim')
+
+    -- GitHub Copilot
+    use("github/copilot.vim")
+
+	-- Undo Tree
+	use('mbbill/undotree')
+
+    -- Leap
+    use("ggandor/leap.nvim")
+
+    -- Surround Nvim
+    use("tpope/vim-surround")
+
+    -- Colorschemes
+    use({ 'rose-pine/neovim', as = 'rose-pine' })
+    use({ 'sainnhe/gruvbox-material', as = 'gruvbox-material' })
 end)
