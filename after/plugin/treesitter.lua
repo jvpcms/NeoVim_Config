@@ -1,4 +1,6 @@
-require'nvim-treesitter.configs'.setup {
+local treesitter = require('nvim-treesitter.configs')
+
+treesitter.setup {
   -- A list of parser names, or "all" (the listed parsers MUST always be installed)
   ensure_installed = { "python", "javascript", "typescript", "c", "lua", "markdown", "markdown_inline" },
 
@@ -19,3 +21,12 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
+
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldcolumn = '2'
+
+vim.keymap.set('n', '<leader>fa', "za", { desc = "Toggle fold" })
+vim.keymap.set('n', '<leader>ff', "zM", { desc = "Close all folds" })
+vim.keymap.set('n', '<leader>fu', "zR", { desc = "Open all folds" })
