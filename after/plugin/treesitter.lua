@@ -47,6 +47,6 @@ vim.opt.fillchars = {
   foldsep = " "            -- Separator between folds
 }
 
-vim.keymap.set('n', '<leader>fa', "za", { desc = "Toggle fold" })
-vim.keymap.set('n', '<leader>ff', "zM", { desc = "Close all folds" })
+vim.keymap.set('n', '<leader>ft', "za", { desc = "Toggle fold" })
+vim.keymap.set('n', '<leader>fa', "zM", { desc = "Close all folds" })
 vim.keymap.set('n', '<leader>fu', "zR", { desc = "Open all folds" })

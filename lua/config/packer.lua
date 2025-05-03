@@ -2,20 +2,20 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
 
-	-- Telescope Fuzy Finder
-	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.8',
-		requires = { {'nvim-lua/plenary.nvim'} }
-	}
+    -- Telescope Fuzy Finder
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.8',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
 
     -- Harpoon File Navigation
     use {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
-        requires = { {"nvim-lua/plenary.nvim"} }
+        requires = { { "nvim-lua/plenary.nvim" } }
     }
 
     -- File Explorer
@@ -31,7 +31,7 @@ return require('packer').startup(function(use)
     })
 
     -- Tresitter Highlighting
-    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
     -- LSP and Completion
     use {
@@ -49,6 +49,14 @@ return require('packer').startup(function(use)
         },
     }
 
+    -- Formating
+    use {
+        'nvimtools/none-ls.nvim',
+        requires = {
+            'jay-babu/mason-null-ls.nvim'
+        }
+    }
+
     -- LazyGit
     use({
         "kdheepak/lazygit.nvim",
@@ -59,13 +67,13 @@ return require('packer').startup(function(use)
     })
 
     -- Git Signs
-    use ('lewis6991/gitsigns.nvim')
+    use('lewis6991/gitsigns.nvim')
 
     -- GitHub Copilot
     use("github/copilot.vim")
 
-	-- Undo Tree
-	use('mbbill/undotree')
+    -- Undo Tree
+    use('mbbill/undotree')
 
     -- Leap
     use("ggandor/leap.nvim")
