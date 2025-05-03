@@ -65,7 +65,5 @@ neotree.setup({
                 require("neo-tree.command").execute({ action = "close" })
             end
         },
-
     },
-
 })

@@ -1,3 +1,3 @@
 require("config.set")
-require("config.lsp")
+require("config.mason")
 require("config.remap")
