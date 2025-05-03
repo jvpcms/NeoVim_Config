@@ -47,6 +47,23 @@ lspconfig.ts_ls.setup({
     filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
 })
 
+-- Set up LSP keymaps when LSP attaches to a buffer
+local lspAucmdGroup = vim.api.nvim_create_augroup('UserLspConfig', {})
+vim.api.nvim_create_autocmd('LspAttach', {
+    group = lspAucmdGroup,
+    callback = function(ev)
+        -- Enable completion triggered by <c-x><c-o>
+        vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+        -- LSP keymaps
+        local opts = { buffer = ev.buf }
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', 'grn', vim.lsp.buf.rename, opts)
+        vim.keymap.set('n', 'grr', vim.lsp.buf.references, opts)
+    end,
+})
+
 -- Set an lsp restart keymap
 vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = "Restart LSP" })
 
