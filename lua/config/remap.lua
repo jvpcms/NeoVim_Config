@@ -54,8 +54,6 @@ vim.keymap.set("n", "<leader>rs", [[:%s/]])
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true })
 
 -- Window navigation
-vim.keymap.set("n", "<leader>ww", "<cmd>w<CR>")
-vim.keymap.set("n", "<leader>wq", "<cmd>wq<CR>")
 vim.keymap.set("n", "<leader>wv", "<C-w>v")
 vim.keymap.set("n", "<leader>ws", "<C-w>s")
 vim.keymap.set("n", "<leader>wx", "<C-w>x")
