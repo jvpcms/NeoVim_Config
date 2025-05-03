@@ -1,6 +1,9 @@
 local lspconfig = require("lspconfig")
 local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+local mason_registry = require("mason-registry")
 
+local vue_language_server = mason_registry.get_package("vue-language-server")
+local vue_language_server_path = vue_language_server:get_install_path() .. "/node_modules/@vue/language-server"
 
 lspconfig.lua_ls.setup({
     capabilities = lsp_capabilities,
@@ -30,10 +33,24 @@ lspconfig.pyright.setup({
     }
 })
 
+lspconfig.ts_ls.setup({
+    capabilities = lsp_capabilities,
+    init_options = {
+        plugins = {
+            {
+                name = "@vue/typescript-plugin",
+                location = vue_language_server_path,
+                languages = { "vue" },
+            }
+        }
+    },
+    filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
+})
+
 -- Set an lsp restart keymap
 vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = "Restart LSP" })
 
--- Diagnostics configuration (unchanged)
+-- Diagnostics configuration
 vim.diagnostic.config({
     virtual_text = {
         spacing = 4,
@@ -42,7 +59,7 @@ vim.diagnostic.config({
     severity_sort = true,
 })
 
--- Diagnostic highlight (unchanged)
+-- Diagnostic highlight
 vim.cmd [[
   highlight DiagnosticVirtualTextError guifg=#FB4934 guibg=#353535
   highlight DiagnosticVirtualTextWarn guifg=#FABD2F guibg=#353535

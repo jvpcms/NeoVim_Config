@@ -4,6 +4,11 @@ local mason_lspconfig = require("mason-lspconfig")
 -- Install LSP servers
 mason.setup()
 mason_lspconfig.setup({
-    ensure_installed = { "pyright", "lua_ls" },
+    ensure_installed = {
+        "pyright",
+        "lua_ls",
+        "ts_ls",
+        "volar",
+    },
     automatic_installation = true,
 })
