@@ -35,15 +35,14 @@ treesitter.setup {
 
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.opt.foldcolumn = '2'
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 vim.opt.foldtext = [[substitute(getline(v:foldstart), '\t', repeat(' ', &tabstop), 'g')..' ... '..(v:foldend - v:foldstart + 1)..' lines']]
 
 vim.opt.fillchars = {
   fold = " ",              -- Remove dots
-  foldopen = "▾",          -- Symbol when fold is open
-  foldclose = "▸",         -- Symbol when fold is closed
+  foldopen = " ",          -- Symbol when fold is open
+  foldclose = " ",         -- Symbol when fold is closed
   foldsep = " "            -- Separator between folds
 }
 

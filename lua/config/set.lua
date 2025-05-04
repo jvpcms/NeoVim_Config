@@ -6,7 +6,7 @@ vim.opt.mouse = ""
 -- Line numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "yes:2"
 
 -- Indent
 vim.opt.tabstop = 4
