@@ -23,7 +23,7 @@ vim.keymap.set("n", "p", '"+p')
 vim.keymap.set("n", "P", '"+P')
 
 -- Use the system's clipboard on yank
-vim.keymap.set({"n", "v"}, "y", '"+y')
+vim.keymap.set({ "n", "v" }, "y", '"+y')
 vim.keymap.set("n", "Y", '"+Y')
 
 -- Use the system's clipboard on x command
@@ -31,18 +31,12 @@ vim.keymap.set("v", "x", '"+x')
 vim.keymap.set("n", "X", '"+X')
 
 -- Use void register to preserve yank buffer in d and p commands
-vim.keymap.set({"n", "v"}, "d", '"_d')
+vim.keymap.set({ "n", "v" }, "d", '"_d')
 vim.keymap.set("n", "D", '"_D')
 vim.keymap.set("n", "dd", '"_dd')
 
 vim.keymap.set("x", "p", '"_d"+p')
 vim.keymap.set("x", "P", '"_d"+P')
-
--- Quick fix navigation
--- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
--- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
--- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
--- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- Replace current word
 vim.keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

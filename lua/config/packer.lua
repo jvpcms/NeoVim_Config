@@ -30,12 +30,6 @@ return require("packer").startup(function(use)
         },
     })
 
-    -- Status Line
-    use({
-        "nvim-lualine/lualine.nvim",
-        requires = { "nvim-tree/nvim-web-devicons", opt = true },
-    })
-
     -- Tresitter Highlighting
     use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 
@@ -86,6 +80,12 @@ return require("packer").startup(function(use)
 
     -- Surround Nvim
     use("tpope/vim-surround")
+
+    -- Status Line
+    use({
+        "nvim-lualine/lualine.nvim",
+        requires = { "nvim-tree/nvim-web-devicons", opt = true },
+    })
 
     -- Colorschemes
     use({ "rose-pine/neovim", as = "rose-pine" })
