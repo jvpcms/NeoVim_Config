@@ -90,4 +90,5 @@ return require("packer").startup(function(use)
     -- Colorschemes
     use({ "rose-pine/neovim", as = "rose-pine" })
     use({ "sainnhe/gruvbox-material", as = "gruvbox-material" })
+    use({ "ellisonleao/gruvbox.nvim", as = "gruvbox" })
 end)

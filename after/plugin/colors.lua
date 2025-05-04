@@ -1,8 +1,8 @@
 -- Default color scheme
-vim.cmd('colorscheme gruvbox-material' )
+local default_colorscheme = "gruvbox"
+vim.cmd.colorscheme(default_colorscheme)
 
 function ApplyColorScheme(color)
-	color = color or "gruvbox-material"
-	vim.cmd.colorscheme(color)
+    color = color or default_colorscheme
+    vim.cmd.colorscheme(color)
 end
-
