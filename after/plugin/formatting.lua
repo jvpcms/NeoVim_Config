@@ -4,8 +4,12 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 null_ls.setup({
     sources = {
-        null_ls.builtins.formatting.black,
-        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.black.with({
+            extra_args = { "--line-length", "80" },
+        }),
+        null_ls.builtins.formatting.prettier.with({
+            extra_args = { "--print-width", "80" },
+        }),
         null_ls.builtins.formatting.stylua,
     },
     on_attach = function(client, bufnr)
