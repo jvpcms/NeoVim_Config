@@ -47,6 +47,9 @@ vim.keymap.set("n", "<leader>rs", [[:%s/]])
 -- Clear search
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true })
 
+-- Search selected
+vim.keymap.set("v", "<leader>ss", [["zy/\V<C-R>z<CR>]], { noremap = true, silent = true, expr = false })
+
 -- Window navigation
 vim.keymap.set("n", "<leader>wv", "<C-w>v")
 vim.keymap.set("n", "<leader>ws", "<C-w>s")
