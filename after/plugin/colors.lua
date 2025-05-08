@@ -34,3 +34,15 @@ local function promptColorschemes()
 end
 
 vim.keymap.set("n", "<leader>cs", promptColorschemes, { desc = "Choose colorscheme" })
+
+-- Toggle dark/light mode
+local function togleDarkMode()
+    local mode = vim.o.background
+    if mode == "dark" then
+        vim.o.background = "light"
+    else
+        vim.o.background = "dark"
+    end
+end
+
+vim.keymap.set("n", "<leader>ct", togleDarkMode, { desc = "Toggle dark/light mode" })
