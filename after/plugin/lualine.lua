@@ -77,8 +77,6 @@ local function statuslineCustomSection()
     return getPathIndicator() .. " " .. cursorCurrentInformation()
 end
 
--- vim.keymap.set("n", "<leader>tt", , { desc = "[T]reesitter [T]est" })
-
 lualine.setup({
     options = {
         theme = "gruvbox",
