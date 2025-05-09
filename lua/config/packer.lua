@@ -2,92 +2,97 @@
 vim.cmd([[packadd packer.nvim]])
 
 return require("packer").startup(function(use)
-	-- Packer can manage itself
-	use("wbthomason/packer.nvim")
+    -- Packer can manage itself
+    use("wbthomason/packer.nvim")
 
-	-- Telescope Fuzy Finder
-	use({
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
-		requires = { { "nvim-lua/plenary.nvim" } },
-	})
+    -- Telescope Fuzy Finder
+    use({
+        "nvim-telescope/telescope.nvim",
+        tag = "0.1.8",
+        requires = { { "nvim-lua/plenary.nvim" } },
+    })
 
-	-- BufferLine
-	use({ "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" })
+    -- BufferLine
+    use({ "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" })
 
-	-- File Explorer
-	use({
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-		},
-	})
+    -- File Explorer
+    use({
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        },
+    })
 
-	-- Tresitter Highlighting
-	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
+    -- Tresitter Highlighting
+    use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 
-	-- LSP and Completion
-	use({
-		"neovim/nvim-lspconfig",
-		requires = {
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-			"hrsh7th/nvim-cmp",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-vsnip",
-			"hrsh7th/vim-vsnip",
-		},
-	})
+    -- Treesitter Playground
+    use("nvim-treesitter/playground")
 
-	-- Formating
-	use({
-		"nvimtools/none-ls.nvim",
-		requires = {
-			"jay-babu/mason-null-ls.nvim",
-		},
-	})
+    -- LSP and Completion
+    use({
+        "neovim/nvim-lspconfig",
+        requires = {
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            "hrsh7th/nvim-cmp",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-vsnip",
+            "hrsh7th/vim-vsnip",
+        },
+    })
 
-	-- LazyGit
-	use({
-		"kdheepak/lazygit.nvim",
-		-- optional for floating window border decoration
-		requires = {
-			"nvim-lua/plenary.nvim",
-		},
-	})
+    -- Formating
+    use({
+        "nvimtools/none-ls.nvim",
+        requires = {
+            "jay-babu/mason-null-ls.nvim",
+        },
+    })
 
-	-- Git Signs
-	use("lewis6991/gitsigns.nvim")
+    -- LazyGit
+    use({
+        "kdheepak/lazygit.nvim",
+        -- optional for floating window border decoration
+        requires = {
+            "nvim-lua/plenary.nvim",
+        },
+    })
 
-	-- GitHub Copilot
-	use("github/copilot.vim")
+    -- Git Signs
+    use("lewis6991/gitsigns.nvim")
 
-	-- Undo Tree
-	use("mbbill/undotree")
+    -- GitHub Copilot
+    use("github/copilot.vim")
 
-	-- Leap
-	use("ggandor/leap.nvim")
+    -- Undo Tree
+    use("mbbill/undotree")
 
-	-- Surround Nvim
-	use("tpope/vim-surround")
+    -- Leap
+    use("ggandor/leap.nvim")
 
-	-- Status Line
-	use({
-		"nvim-lualine/lualine.nvim",
-		requires = { "nvim-tree/nvim-web-devicons", opt = true },
-	})
+    -- Surround Nvim
+    use("tpope/vim-surround")
 
-	-- Duck
-	use({ "tamton-aquib/duck.nvim" })
+    -- Status Line
+    use({
+        "nvim-lualine/lualine.nvim",
+        requires = { "nvim-tree/nvim-web-devicons", opt = true },
+    })
 
-	-- Colorschemes
-	use({ "rose-pine/neovim", as = "rose-pine" })
-	use({ "sainnhe/gruvbox-material", as = "gruvbox-material" })
-	use({ "ellisonleao/gruvbox.nvim", as = "gruvbox" })
+    -- Duck
+    use({ "tamton-aquib/duck.nvim" })
+
+    -- Colorschemes
+    use("f-person/auto-dark-mode.nvim")
+    use({ "rose-pine/neovim", as = "rose-pine" })
+    use({ "sainnhe/gruvbox-material", as = "gruvbox-material" })
+    use({ "ellisonleao/gruvbox.nvim", as = "gruvbox" })
+    use({ "sainnhe/everforest", as = "everforest" })
 end)

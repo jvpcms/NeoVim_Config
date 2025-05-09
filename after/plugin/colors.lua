@@ -1,12 +1,14 @@
+local auto_dark_mode = require("auto-dark-mode")
+
 local available_colorschemes = {
     "rose-pine",
     "gruvbox-material",
     "gruvbox",
+    "everforest",
 }
 
 -- Default color scheme
 local default_colorscheme = "gruvbox"
-vim.cmd.colorscheme(default_colorscheme)
 
 local function applyColorScheme(color)
     color = color or default_colorscheme
@@ -35,14 +37,16 @@ end
 
 vim.keymap.set("n", "<leader>cs", promptColorschemes, { desc = "Choose colorscheme" })
 
--- Toggle dark/light mode
-local function togleDarkMode()
-    local mode = vim.o.background
-    if mode == "dark" then
-        vim.o.background = "light"
-    else
-        vim.o.background = "dark"
-    end
-end
-
-vim.keymap.set("n", "<leader>ct", togleDarkMode, { desc = "Toggle dark/light mode" })
+-- Auto Dark Mode
+auto_dark_mode.setup({
+    set_dark_mode = function()
+        vim.cmd.colorscheme("gruvbox")
+        vim.api.nvim_set_option_value("background", "dark", {})
+    end,
+    set_light_mode = function()
+        vim.cmd.colorscheme("everforest")
+        vim.api.nvim_set_option_value("background", "light", {})
+    end,
+    update_interval = 3000,
+    fallback = "dark",
+})
