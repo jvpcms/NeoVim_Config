@@ -1,5 +1,6 @@
 local lualine = require("lualine")
 local treesitter = require("nvim-treesitter")
+local treesitter_utils = require("nvim-treesitter.ts_utils")
 
 local function getRelativePath()
     return vim.fn.expand("%:.")
@@ -25,56 +26,66 @@ local function getPathIndicator()
     return pathIndicator
 end
 
-local function cursorInterface()
-    return treesitter.statusline({
-        type_patterns = { "interface_declaration" },
-    })
-end
+local typePatternsSymbols = {
+    [" f"] = { "function_declaration", "function_definition", "method_definition" },
+    [" f(x)"] = { "function_call", "call", "call_expression" },
+    [" ⊟"] = { "class_definition", "class_declaration" },
+    [" ⚯"] = { "interface_declaration" },
+}
 
-local function cursorCurrentClass()
-    return treesitter.statusline({
-        type_patterns = { "class" },
-    })
-end
+local fieldsWithIdentifiers = {
+    "name",
+    "function",
+}
 
-local function cursorCurrentFunction()
-    return treesitter.statusline({
-        type_patterns = { "function" },
-    })
-end
+local function prettyNodeIndication(node)
+    local nodeType = node:type()
+    local nodeIdientifier = nil
 
-local function cursorCurrentMethod()
-    return treesitter.statusline({
-        type_patterns = { "method" },
-    })
-end
-
-local function cursorCurrentInformation()
-    local interface = cursorInterface()
-    local class = cursorCurrentClass()
-    local functionName = cursorCurrentFunction()
-    local method = cursorCurrentMethod()
-
-    local indication = ""
-
-    if interface ~= "" then
-        indication = indication .. " ➔ ⚯ " .. interface
-    end
-    if class ~= "" then
-        indication = indication .. " ➔ ⊟ " .. class
-    end
-    if functionName ~= "" then
-        indication = indication .. " ➔ fx " .. functionName
-    end
-    if method ~= "" then
-        indication = indication .. " ➔ fx " .. method
+    for _, field in ipairs(fieldsWithIdentifiers) do
+        local fieldNode = node:field(field)
+        if fieldNode and #fieldNode > 0 then
+            nodeIdientifier = fieldNode[1]
+            break
+        end
     end
 
-    return indication
+    if nodeIdientifier then
+        local nodeTypeSymbol = ""
+
+        for symbol, patterns in pairs(typePatternsSymbols) do
+            for _, pattern in ipairs(patterns) do
+                if nodeType == pattern then
+                    nodeTypeSymbol = symbol
+                    break
+                end
+            end
+        end
+
+        local nodeNameText = vim.treesitter.get_node_text(nodeIdientifier, 0)
+        return " ➔" .. nodeTypeSymbol .. " " .. nodeNameText
+    else
+        return ""
+    end
+end
+
+local function getNodeNameSequence(node, depth)
+    local startNode = node
+
+    if depth == 0 then
+        startNode = treesitter_utils.get_node_at_cursor()
+    end
+
+    if startNode then
+        local parent = startNode:parent()
+        return getNodeNameSequence(parent, depth + 1) .. prettyNodeIndication(startNode)
+    else
+        return ""
+    end
 end
 
 local function statuslineCustomSection()
-    return getPathIndicator() .. " " .. cursorCurrentInformation()
+    return getPathIndicator() .. " " .. getNodeNameSequence(nil, 0)
 end
 
 lualine.setup({
@@ -85,6 +96,8 @@ lualine.setup({
         component_separators = { left = "", right = "" },
     },
     sections = {
-        lualine_c = { statuslineCustomSection },
+        lualine_c = {
+            statuslineCustomSection,
+        },
     },
 })

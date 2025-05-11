@@ -33,7 +33,7 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 -- Scolloff at botton of screen, include @-@ in filenames
-vim.opt.scrolloff = 100
+vim.opt.scrolloff = 8
 vim.opt.isfname:append("@-@")
 
 -- Update time

@@ -11,7 +11,7 @@ All plugins are managed by [Packer](https://github.com/wbthomason/packer.nvim).
 
 ### File Finding and Navigation
 
-**[Telescope](https://github.com/nvim-telescope/telescope.nvim):**  
+**[Telescope](https://github.com/nvim-telescope/telescope.nvim):**
 Fuzzy file finder, grep tool, and more
 
 ```lua
@@ -21,7 +21,7 @@ use {
 }
 ```
 
-**[Harpoon](https://ThePrimeagen/harpoon):**    
+**[Harpoon](https://ThePrimeagen/harpoon):**
 Mark files and quickly navigate to them
 
 ```lua
@@ -34,7 +34,7 @@ use {
 
 ### Syntax Highlighting and Code Completion
 
-**[Treesitter](https://github.com/nvim-treesitter/nvim-treesitter):**   
+**[Treesitter](https://github.com/nvim-treesitter/nvim-treesitter):**  
 Syntax highlighting and code folding
 
 ```lua
@@ -44,10 +44,10 @@ use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 **[LSPConfig](https://github.com/neovim/nvim-lspconfig):**  
 Language Server Protocol configuration for Neovim
 
-**[Mason](https://github.com/williamboman/mason.nvim):**    
+**[Mason](https://github.com/williamboman/mason.nvim):**  
 Package manager for LSP servers, DAP servers, linters, and formatters
 
-**[NvimCMP](https://github.com/hrsh7th/nvim-cmp):**   
+**[NvimCMP](https://github.com/hrsh7th/nvim-cmp):**  
 Completion engine for Neovim
 
 ```lua
@@ -66,8 +66,10 @@ Completion engine for Neovim
         },
     }
 ```
+
 ### Git Integration
-**[LazyGit](https://github.com/kdheepak/lazygit.nvim):**    
+
+**[LazyGit](https://github.com/kdheepak/lazygit.nvim):**  
 Provides a powerfull UI for git operations (Got used to it in LazyVim 😄)
 
 ```lua
@@ -79,7 +81,7 @@ Provides a powerfull UI for git operations (Got used to it in LazyVim 😄)
     })
 ```
 
-**[Gitsigns](https://github.com/lewis6991/gitsigns.nvim):**   
+**[Gitsigns](https://github.com/lewis6991/gitsigns.nvim):**  
 Indicate added, changed, deleted lines in the gutter
 
 ```lua
@@ -92,7 +94,8 @@ Indicate added, changed, deleted lines in the gutter
 ```
 
 ### AI Suggestions
-**[Copilot](https://github.com/github/copilot.vim):**   
+
+**[Copilot](https://github.com/github/copilot.vim):**  
 GitHub Copilot integration for Neovim
 
 ```lua
@@ -100,14 +103,15 @@ GitHub Copilot integration for Neovim
 ```
 
 ### Better Dev Experience
-**[Undotree](https://github.com/mbbill/undotree):**   
+
+**[Undotree](https://github.com/mbbill/undotree):**  
 Visualize and navigate the past undo history of a file
 
 ```lua
 use('mbbill/undotree')
 ```
 
-**[Leap](https://github.com/ggandor/leap.nvim):**   
+**[Leap](https://github.com/ggandor/leap.nvim):**  
 Easily jump to any location on the visible area
 
 ```lua
@@ -122,6 +126,7 @@ use("tpope/vim-surround")
 ```
 
 ## Keybindings
+
 Here are some of the keybindings I find most useful:
 
 1. Use system clipboard for Vim yank, cut, and paste
@@ -144,6 +149,7 @@ vim.keymap.set("n", "X", '"+X')
 ```
 
 2. Keep clipboard unchanged when using `p` and `d`
+
 ```lua
 vim.keymap.set({"n", "v"}, "d", '"_d')
 vim.keymap.set("n", "D", '"_D')
@@ -154,6 +160,7 @@ vim.keymap.set("x", "P", '"_d"+P')
 ```
 
 3. Keep cursor centered when searching and jumping half a page
+
 ```lua
 -- Half-page jump keeps cursor in the middle
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -163,4 +170,3 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 ```
-
