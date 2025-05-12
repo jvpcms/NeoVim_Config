@@ -83,9 +83,20 @@ local function getNodeNameSequence(node, depth)
     end
 end
 
-local function statuslineCustomSection()
-    return getPathIndicator() .. " " .. getNodeNameSequence(nil, 0)
+local function statusSection()
+    return getNodeNameSequence(nil, 0)
 end
+
+local statuslineCustomSection = {
+    {
+        getPathIndicator,
+        color = { fg = "#82A598" },
+    },
+    {
+        statusSection,
+        color = { fg = "#8EC07C" },
+    },
+}
 
 lualine.setup({
     options = {
@@ -95,8 +106,6 @@ lualine.setup({
         component_separators = { left = "", right = "" },
     },
     sections = {
-        lualine_c = {
-            statuslineCustomSection,
-        },
+        lualine_c = statuslineCustomSection,
     },
 })
