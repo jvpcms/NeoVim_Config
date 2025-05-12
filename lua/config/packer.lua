@@ -86,6 +86,9 @@ return require("packer").startup(function(use)
         requires = { "nvim-tree/nvim-web-devicons", opt = true },
     })
 
+    -- Diagnostic Dashbord
+    use("folke/trouble.nvim")
+
     -- Duck
     use({ "tamton-aquib/duck.nvim" })
 

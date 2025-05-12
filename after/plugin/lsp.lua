@@ -97,9 +97,3 @@ vim.api.nvim_create_autocmd("DiagnosticChanged", {
         vim.diagnostic.setqflist({ title = "Diagnostics", open = false })
     end,
 })
-
-vim.keymap.set("n", "<leader>j", "<cmd>cnext<CR>", { desc = "Next diagnostic" })
-
-vim.keymap.set("n", "<leader>k", "<cmd>cprev<CR>", { desc = "Previous diagnostic" })
-
-vim.keymap.set("n", "<leader>xx", vim.diagnostic.setqflist, { desc = "Show all diagnostics" })

@@ -1,5 +1,4 @@
 local lualine = require("lualine")
-local treesitter = require("nvim-treesitter")
 local treesitter_utils = require("nvim-treesitter.ts_utils")
 
 local function getRelativePath()

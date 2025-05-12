@@ -35,7 +35,7 @@ local function promptColorschemes()
     end)
 end
 
-vim.keymap.set("n", "<leader>cs", promptColorschemes, { desc = "Choose colorscheme" })
+vim.keymap.set("n", "<leader>cc", promptColorschemes, { desc = "Choose colorscheme" })
 
 -- Auto Dark Mode
 auto_dark_mode.setup({
