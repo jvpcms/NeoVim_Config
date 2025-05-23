@@ -92,6 +92,9 @@ return require("packer").startup(function(use)
     -- Duck
     use({ "tamton-aquib/duck.nvim" })
 
+    -- Vim Tmux Navigator
+    use("christoomey/vim-tmux-navigator")
+
     -- Colorschemes
     use("f-person/auto-dark-mode.nvim")
     use({ "rose-pine/neovim", as = "rose-pine" })
