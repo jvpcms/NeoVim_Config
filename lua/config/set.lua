@@ -22,8 +22,6 @@ vim.opt.wrap = false
 -- Vim backup disable, but undotree access to older versions
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
 
 -- Search highlighting and incremental search
 vim.opt.hlsearch = true
