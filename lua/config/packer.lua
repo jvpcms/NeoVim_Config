@@ -69,7 +69,7 @@ return require("packer").startup(function(use)
     use("lewis6991/gitsigns.nvim")
 
     -- GitHub Copilot
-    use("github/copilot.vim")
+    -- use("github/copilot.vim")
 
     -- Undo Tree
     use("mbbill/undotree")
