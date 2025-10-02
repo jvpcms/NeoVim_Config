@@ -10,6 +10,7 @@ mason_lspconfig.setup({
         "lua_ls",
         "ts_ls",
         "volar",
+        "julials",
     },
     automatic_installation = true,
 })

@@ -51,6 +51,16 @@ lspconfig.ts_ls.setup({
     filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 })
 
+lspconfig.julials.setup({
+    capabilities = lsp_capabilities,
+    settings = {
+        julia = {
+            format = { indent = 4 },
+            lint = { missingrefs = "none" },
+        },
+    },
+})
+
 -- Set up LSP keymaps when LSP attaches to a buffer
 local lspAucmdGroup = vim.api.nvim_create_augroup("UserLspConfig", {})
 vim.api.nvim_create_autocmd("LspAttach", {
