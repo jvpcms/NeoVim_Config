@@ -71,6 +71,24 @@ return require("packer").startup(function(use)
     -- GitHub Copilot
     -- use("github/copilot.vim")
 
+    -- Avante
+    use({
+        'yetone/avante.nvim',
+        requires = {
+          'nvim-lua/plenary.nvim',
+          'MunifTanjim/nui.nvim',
+          'MeanderingProgrammer/render-markdown.nvim',
+          'hrsh7th/nvim-cmp',
+          'nvim-tree/nvim-web-devicons',
+          'HakonHarnes/img-clip.nvim',
+          'zbirenbaum/copilot.lua',
+          'stevearc/dressing.nvim',
+          'folke/snacks.nvim',
+        },
+        branch = 'main',
+        run = 'make',
+    })
+
     -- Undo Tree
     use("mbbill/undotree")
 
@@ -97,7 +115,6 @@ return require("packer").startup(function(use)
 
     -- Colorschemes
     use("f-person/auto-dark-mode.nvim")
-    use({ "rose-pine/neovim", as = "rose-pine" })
     use({ "sainnhe/gruvbox-material", as = "gruvbox-material" })
     use({ "ellisonleao/gruvbox.nvim", as = "gruvbox" })
     use({ "sainnhe/everforest", as = "everforest" })
