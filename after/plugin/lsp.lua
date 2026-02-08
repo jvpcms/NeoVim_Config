@@ -2,9 +2,6 @@ local lspconfig = require("lspconfig")
 local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 local mason_registry = require("mason-registry")
 
-local vue_language_server = mason_registry.get_package("vue-language-server")
-local vue_language_server_path = vue_language_server:get_install_path() .. "/node_modules/@vue/language-server"
-
 lspconfig.lua_ls.setup({
     capabilities = lsp_capabilities,
     settings = {
@@ -39,16 +36,7 @@ lspconfig.pyright.setup({
 
 lspconfig.ts_ls.setup({
     capabilities = lsp_capabilities,
-    init_options = {
-        plugins = {
-            {
-                name = "@vue/typescript-plugin",
-                location = vue_language_server_path,
-                languages = { "vue" },
-            },
-        },
-    },
-    filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+    filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
 })
 
 lspconfig.julials.setup({
