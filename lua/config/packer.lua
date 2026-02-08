@@ -93,7 +93,7 @@ return require("packer").startup(function(use)
     use("mbbill/undotree")
 
     -- Leap
-    use("ggandor/leap.nvim")
+    use {'https://codeberg.org/andyg/leap.nvim'}
 
     -- Surround Nvim
     use("tpope/vim-surround")
